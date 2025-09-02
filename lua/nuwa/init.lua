@@ -1,7 +1,7 @@
 -- Nuwa.nvim by Alyx Shang.
 -- Licensed under the FSL v1.
 
--- Declaring the module.
+-- Declaring the Nuwa module.
 local M = {}
 
 -- A function to emulate
@@ -9,6 +9,10 @@ local M = {}
 function pass()
 end
 
+-- A function to register a command
+-- to make it possible for users to
+-- delete a package they have installed
+-- from a remote Git repository.
 M.delCommand = function()
   vim.api.nvim_create_user_command(
     'NuwaDelete',
@@ -57,23 +61,10 @@ M.delCommand = function()
   )
 end
 
-M.selfUpdateCommand = function()
-  vim.api.nvim_create_user_command(
-    'NuwaSelfUpdate',
-    function(opts)
-      local pkgPath = vim.fn.stdpath("data") .. "/nuwa"
-      M.updatePackage(pkgPath)
-    end,
-    {
-      nargs = 0
-    }
-  )
-end
-
-
 -- A function to create the "nuwaPkgs" directory
 -- if it doesn't exist already.
 M.setup = function(options)
+  local nuwaPath = vim.fn.stdpath("data") .. "/nuwa"
   local nuwaPkgRoot = vim.fn.stdpath("data") .. "/nuwaPkgs"
   local check = vim.loop.fs_stat(nuwaPkgRoot)
   if check and check.directory then
@@ -82,7 +73,7 @@ M.setup = function(options)
     vim.fn.mkdir(nuwaPkgRoot, "p")
   end
   M.delCommand()
-  M.selfUpdateCommand()
+  M.updatePackage(nuwaPath)
 end
 
 -- A function to update a package
@@ -175,6 +166,13 @@ M.installPackage = function(gitHost, owner, project)
   else
     M.clonePackage(gitUrl, pkgPath)
   end
+end
+
+-- A function to "install" a package
+-- saved locally on disk and not
+-- hosted in a remote Git repository.
+M.installLocal = function(pkgPath)
+  vim.opt.rtp:prepend(pkgPath)
 end
 
 -- Exporting the 
