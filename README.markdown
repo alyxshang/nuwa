@@ -16,6 +16,11 @@ Chinese goddess of creation ***Nuwa (女媧)***.
 - Gives the user full control over how one wants to add or install plugins.
 - Extremely light (<200 LOC).
 
+## EXAMPLE CONFIGURATION :woman_dancing:
+
+I use ***Nuwa*** to manage the plugins in my own configuration. This configuration
+can be found here: [`alyxshang/alyx.nvim`](https://github.com/alyxshang/alyx.nvim)
+
 ## INSTALLATION :inbox_tray:
 
 ***Nuwa*** requires the `git` command to be available from 
