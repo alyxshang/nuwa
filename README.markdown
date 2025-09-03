@@ -8,6 +8,14 @@ This repository contains the Lua source code for an extremely light
 package manager for Neovim. The package manager is named after the
 Chinese goddess of creation ***Nuwa (女媧)***.
 
+## FEATURES :test_tube:
+
+- Auto-updates every single plugin as soon as you enter Neovim.
+- Auto-updates the package manager as you enter Neovim.
+- Allows one to manually delete a plugin with the `NuwaDelete` command.
+- Gives you control over how you want to add and install plugins.
+- Extremely light (<200 LOC).
+
 ## INSTALLATION :inbox_tray:
 
 ***Nuwa*** requires the `git` command to be available from 
