@@ -6,7 +6,7 @@
 
 This repository contains the Lua source code for an extremely light
 package manager for Neovim. The package manager is named after the
-Chinese goddess of creation ***Nuwa (女媧)***.
+Chinese goddess of creation, ***Nuwa (女媧)***.
 
 ## FEATURES :test_tube:
 
